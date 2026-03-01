@@ -1,3 +1,5 @@
+import 'package:cash_why/pantallas/pantallaEgresos.dart';
+import 'package:cash_why/pantallas/pantallaIngresos.dart';
 import 'package:flutter/material.dart';
 
 class PantallaPrincipal extends StatelessWidget {
@@ -55,9 +57,21 @@ class BotonesPrincipal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return ElevatedButton(
       onPressed: () {
-        print(nameButton);
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) {
+              if (nameButton == "Ingresos") {
+                return PantallaIngresos();
+              } else if (nameButton == "Egresos") {
+                return PantallaEgresos(nameButton: nameButton);
+              }
+              return const SizedBox.shrink();
+            },
+          ),
+        );
       },
       style:
           TextButton.styleFrom(
