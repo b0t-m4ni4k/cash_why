@@ -1,3 +1,4 @@
+import 'package:cash_why/pantallas/app_bar.dart';
 import 'package:cash_why/pantallas/pantallaEgresos.dart';
 import 'package:cash_why/pantallas/pantallaIngresos.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,7 @@ class PantallaPrincipal extends StatelessWidget {
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(100),
-        child: const Cabeza(),
+        child: const Cabeza(title: "Why Cash"),
       ),
       body: Align(
         alignment: Alignment(0, -0.5),
@@ -25,26 +26,6 @@ class PantallaPrincipal extends StatelessWidget {
           ),
         ),
       ),
-    );
-  }
-}
-
-class Cabeza extends StatelessWidget {
-  const Cabeza({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return AppBar(
-      title: const Text(
-        "Why Cash?",
-        style: TextStyle(
-          fontSize: 30,
-          fontWeight: FontWeight.bold,
-          color: Colors.white,
-        ),
-      ),
-      backgroundColor: const Color.fromARGB(255, 37, 150, 243),
-      actions: [],
     );
   }
 }
@@ -64,7 +45,7 @@ class BotonesPrincipal extends StatelessWidget {
           MaterialPageRoute(
             builder: (context) {
               if (nameButton == "Ingresos") {
-                return PantallaIngresos();
+                return PantallaIngresos(nameButton: nameButton);
               } else if (nameButton == "Egresos") {
                 return PantallaEgresos(nameButton: nameButton);
               }

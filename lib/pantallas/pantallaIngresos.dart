@@ -1,13 +1,24 @@
+import 'package:cash_why/pantallas/app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class PantallaIngresos extends StatelessWidget {
-  const PantallaIngresos({super.key});
+  const PantallaIngresos({required this.nameButton, super.key});
+
+  final String nameButton;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text("data")),
-      body: const Center(child: Text("Pantalla Ingresos")),
+      appBar: Cabeza(title: nameButton),
+      body: Center(
+        child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Ingrese su ingreso',
+          ),
+        ),
+      ),
     );
   }
 }

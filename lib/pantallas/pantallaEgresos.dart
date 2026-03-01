@@ -1,3 +1,4 @@
+import 'package:cash_why/pantallas/app_bar.dart';
 import 'package:flutter/material.dart';
 
 class PantallaEgresos extends StatelessWidget {
@@ -8,8 +9,15 @@ class PantallaEgresos extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("$nameButton")),
-      body: const Center(child: Text("Pantalla Ingresos")),
+      appBar: Cabeza(title: nameButton),
+      body: Center(
+        child: TextField(
+          decoration: InputDecoration(
+            border: OutlineInputBorder(),
+            labelText: 'Ingrese su ingreso',
+          ),
+        ),
+      ),
     );
   }
 }
