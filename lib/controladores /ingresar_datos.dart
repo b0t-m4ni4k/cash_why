@@ -3,16 +3,16 @@ import 'package:flutter/services.dart';
 
 // "funcion" para ingreso de datos
 class Ingreso extends StatelessWidget {
-  Ingreso({super.key, required this.name});
+  const Ingreso({super.key, required this.name, required this.controller});
 
   final String name;
   //esto es para guardar los datos inresados en el textField
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController controller;
 
   @override
   Widget build(BuildContext context) {
     return TextField(
-      controller: _controller,
+      controller: controller,
       inputFormatters: [PuntosTres()],
       keyboardType: TextInputType.number,
       decoration: InputDecoration(
@@ -34,6 +34,7 @@ class PuntosTres extends TextInputFormatter {
     if (newValue.text.isEmpty) {
       return newValue;
     }
+
     // lo que pasa aqui es que se crea un contador desde cero
     int contador = 0;
     //se entra en un ciclo for que recorre el texto desde el final hasta el principio
@@ -50,6 +51,23 @@ class PuntosTres extends TextInputFormatter {
     return TextEditingValue(
       text: text,
       selection: TextSelection.collapsed(offset: text.length),
+    );
+  }
+}
+
+class NombreOperacion extends StatelessWidget {
+  const NombreOperacion({required this.controller, super.key});
+
+  final TextEditingController controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return TextField(
+      controller: controller,
+      decoration: InputDecoration(
+        border: UnderlineInputBorder(),
+        labelText: 'Ingrese el nombre de su Compra',
+      ),
     );
   }
 }
